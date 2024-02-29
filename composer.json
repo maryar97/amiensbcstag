@@ -4,7 +4,7 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
-        "php": ">=8.1",
+        "php": ">=8.3",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "doctrine/dbal": "^3",
@@ -83,6 +83,11 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
+        ],
+        "fixtures": [
+            "php bin/console d:d:d --force --if-exists",
+            "php bin/console d:d:c",
+            "php bin/console d:s:u --force --complete"
         ]
     },
     "conflict": {
