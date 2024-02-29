@@ -1,20 +1,47 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AdresseController!{% endblock %}
+{% block title %}Adresses {% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <h1>Adresses</h1>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Prenom</th>
+                <th>Nom</th>
+                <th>Adresse</th>
+                <th>Codepostal</th>
+                <th>Ville</th>
+                <th>Telephone</th>
+                <th>Pays</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for adresse in adresses %}
+            <tr>
+                <td>{{ adresse.id }}</td>
+                <td>{{ adresse.prenom }}</td>
+                <td>{{ adresse.nom }}</td>
+                <td>{{ adresse.adresse }}</td>
+                <td>{{ adresse.codepostal }}</td>
+                <td>{{ adresse.ville }}</td>
+                <td>{{ adresse.telephone }}</td>
+                <td>{{ adresse.pays }}</td>
+                <td>
+                    <a href="{{ path('app_adresse_show', {'id': adresse.id}) }}">Afficher</a>
+                    <a href="{{ path('app_adresse_edit', {'id': adresse.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">Aucun enregistrement trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/home/mary/Documents/amiensbc/src/Controller/AdresseController.php</code></li>
-        <li>Your template at <code>/home/mary/Documents/amiensbc/templates/adresse/index.html.twig</code></li>
-    </ul>
-</div>
+    <a href="{{ path('app_adresse_new') }}">Créer nouveau </a>
 {% endblock %}

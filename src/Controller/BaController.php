@@ -7,14 +7,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class BpController extends AbstractController
+class BaController extends AbstractController
 {
-    #[Route('/bp', name: 'app_bp')]
+    #[Route('/ba', name: 'app_ba')]
     public function index( FormedeboxeRepository $formedeboxeRepository): Response
-    {$forme2=$formedeboxeRepository->findBy(['id' => 3]);
-        return $this->render('bp/index.html.twig', [
-            'formes2'=>$forme2,
+    {$forme1=$formedeboxeRepository->findBy(['id' => 2]);
+        return $this->render('ba/index.html.twig', [
+            'formes1'=>$forme1,
             'routes' => '/' ,
+
         ]);
     }
 }

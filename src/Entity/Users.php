@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\UsersRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -67,6 +68,12 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\OneToMany(targetEntity: Adresse::class, mappedBy: "users")]
     private Collection $adresses;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $datenaiss = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $formedeboxe = null;
 
     
     public function __construct()
@@ -319,8 +326,29 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    public function getDatenaiss(): ?\DateTimeInterface
+    {
+        return $this->datenaiss;
+    }
 
-    
+    public function setDatenaiss(\DateTimeInterface $datenaiss): static
+    {
+        $this->datenaiss = $datenaiss;
+
+        return $this;
+    }
+
+    public function getFormedeboxe(): ?string
+    {
+        return $this->formedeboxe;
+    }
+
+    public function setFormedeboxe(string $formedeboxe): static
+    {
+        $this->formedeboxe = $formedeboxe;
+
+        return $this;
+    }
     }
 
     
