@@ -44,7 +44,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $adresse = null;
 
-    #[ORM\Column(length: 5)]
+    #[ORM\Column(length: 255)]
     private ?string $codepostal = null;
 
     #[ORM\Column(length: 150)]
@@ -79,6 +79,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     public function __construct()
     {
         $this->commandes = new ArrayCollection();
+        $this->setCreatedAt(new \DateTimeImmutable());
     }
 
     

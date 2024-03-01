@@ -3,7 +3,7 @@
 namespace App\Entity;
 
 use App\Entity\Commande;
-use App\Entity\FormeDeBoxe;
+use App\Entity\Formedeboxe;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\PanierRepository;
@@ -31,9 +31,10 @@ class Panier
     #[ORM\OneToMany(targetEntity: Commande::class, mappedBy: "panier")]
     private $commandes;
 
-    #[ORM\ManyToOne(targetEntity: FormeDeBoxe::class, inversedBy: "paniers")]
+    #[ORM\ManyToOne(targetEntity: Formedeboxe::class, inversedBy: "paniers")]
     #[ORM\JoinColumn(name: "forme_de_boxe_id", referencedColumnName: "id")]
-    private ?FormeDeBoxe $formeDeBoxe = null;
+    private ?Formedeboxe $Formedeboxe = null;
+
     
 
     public function __construct()
@@ -112,14 +113,14 @@ class Panier
         return $this;
     }
 
-    public function getFormeDeBoxe(): ?FormeDeBoxe
+    public function getFormedeboxe(): ?Formedeboxe
     {
-        return $this->formeDeBoxe;
+        return $this->Formedeboxe;
     }
 
-    public function setFormeDeBoxe(?FormeDeBoxe $formeDeBoxe): self
+    public function setFormedeboxe(?Formedeboxe $Formedeboxe): self
     {
-        $this->formeDeBoxe = $formeDeBoxe;
+        $this->Formedeboxe = $Formedeboxe;
 
         return $this;
     }

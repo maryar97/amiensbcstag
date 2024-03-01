@@ -29,6 +29,7 @@ class AppFixtures extends Fixture
         ->setville('capville')
         ->settelephone('0697986575')
         ->setphoto('1.jpg')
+        ->setCreatedAt(new \DateTimeImmutable())
         ->setformedeboxe('boxe_educative')
         ->setRoles(['ROLE_ADMIN']);
         $manager->persist($users1);
@@ -45,6 +46,7 @@ class AppFixtures extends Fixture
         ->setville('cardonelle')
         ->settelephone('0203946576')
         ->setphoto('2.jpg')
+        ->setCreatedAt(new \DateTimeImmutable())
         ->setRoles(['ROLE_USER'])
         ->setformedeboxe('boxe_amateur');
         $manager->persist($users2);
@@ -62,6 +64,7 @@ class AppFixtures extends Fixture
         ->setville('villers')
         ->settelephone('0607059876')
         ->setphoto('3.pjg')
+        ->setCreatedAt(new \DateTimeImmutable())
         ->setRoles(['ROLE_USER'])
         ->setformedeboxe('aeroboxe');
         $manager->persist($users3);
